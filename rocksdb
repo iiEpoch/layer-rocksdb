@@ -1,0 +1,8 @@
+#!/bin/bash
+./db_bench --benchmarks="fillrandom,stats,levelstats" \
+--db=./db_bench_test \
+--value_size=256 \
+--num=10000000 \
+--db_paths_1=./test1 \
+--db_paths_2=./test2 \
+--threads=1 \
