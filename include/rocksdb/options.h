@@ -247,7 +247,9 @@ struct ColumnFamilyOptions : public AdvancedColumnFamilyOptions {
   //
   // Dynamically changeable through SetOptions() API
   int level0_file_num_compaction_trigger = 4;
-
+#ifdef USE_LAYER
+  int layer_level = 2;
+#endif
   // If non-nullptr, use the specified function to determine the
   // prefixes for keys.  These prefixes will be placed in the filter.
   // Depending on the workload, this can reduce the number of read-IOP
@@ -1146,6 +1148,7 @@ struct DBOptions {
   bool best_efforts_recovery = false;
 };
 
+  
 // Options to control the behavior of a database (passed to DB::Open)
 struct Options : public DBOptions, public ColumnFamilyOptions {
   // Create an Options object with default values for all fields.
