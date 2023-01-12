@@ -594,6 +594,8 @@ DEFINE_string(db, "", "Use the db with the following name.");
 DEFINE_string(db_paths_1, "", "Use the db_paths with the following name.");
 
 DEFINE_string(db_paths_2, "", "Use the db_paths with the following name.");
+
+DEFINE_int32(layer_level, 2,"layer_level");
 #endif
 
 // Read cache flags
@@ -4027,8 +4029,9 @@ class Benchmark {
     options.statistics = dbstats;
     options.wal_dir = FLAGS_wal_dir;
 #ifdef USE_LAYER
-     options.db_paths.emplace_back(FLAGS_db_paths_1, 0);
+    options.db_paths.emplace_back(FLAGS_db_paths_1, 0);
     options.db_paths.emplace_back(FLAGS_db_paths_2, 0);
+    options.layer_level = FLAGS_layer_level;
 #endif
     options.create_if_missing = !FLAGS_use_existing_db;
     options.dump_malloc_stats = FLAGS_dump_malloc_stats;
