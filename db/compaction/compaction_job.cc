@@ -1467,7 +1467,7 @@ Status CompactionJob::OpenCompactionOutputFile(
   assert(sub_compact != nullptr);
   assert(sub_compact->builder == nullptr);
  #ifdef USE_LAYER
-  if(sub_compact->compaction->output_level()<=3)
+  if(sub_compact->compaction->output_level()<=sub_compact->compaction->immutable_cf_options()->layer_level)
     {
       sub_compact->compaction->setpath_0();
     }
