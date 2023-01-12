@@ -650,6 +650,10 @@ ImmutableCFOptions::ImmutableCFOptions(const ImmutableDBOptions& db_options,
           cf_options.max_write_buffer_number_to_maintain),
       max_write_buffer_size_to_maintain(
           cf_options.max_write_buffer_size_to_maintain),
+      #ifdef USE_LAYER
+      layer_level(
+          cf_options.layer_level),
+      #endif
       inplace_update_support(cf_options.inplace_update_support),
       inplace_callback(cf_options.inplace_callback),
       info_log(db_options.info_log.get()),
